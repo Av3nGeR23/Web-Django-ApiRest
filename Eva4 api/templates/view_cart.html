@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tu Carrito de Compras</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Estilo para el fondo con la imagen desde una URL externa */
+        body {
+            background-image: url('https://www.latercera.com/resizer/rHXbfywbaQvA5J2hyx92hzUFNvw=/900x600/smart/cloudfront-us-east-1.images.arcpublishing.com/copesa/JPI3ZEE3VNDKBDNAHEDLSFMAVQ.jpg');
+            /* Reemplaza 'URL_DE_LA_IMAGEN' con la URL real de la imagen */
+            background-size: cover;
+            /* Ajusta el tamaño de la imagen para cubrir el fondo */
+        }
+    </style>
+</head>
+
+<body>
+    {% include 'navbar.html' %}
+    <div class="alert alert-info display-1 text-center"
+        style="background-color: rgba(255, 255, 255, 0.8); font-weight: bold;">CARRITO DE COMPRAS</div>
+
+    <div class="container">
+
+        <ul class="list-group mt-3">
+            {% for product, quantity in cart.items %}
+            <li class="list-group-item" style="font-size: 28px;">
+                Nombre : {{ product.modelo }} - Cantidad: {{ quantity }} - Precio: ${{ product.precio }}
+            </li>
+            {% empty %}
+            <li class="list-group-item">Tu carrito está vacío.</li>
+            {% endfor %}
+        </ul>
+        <form action="{% url 'clear_cart' %}" method="post" class="mt-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-warning btn-lg">Limpiar Carrito</button>
+        </form>
+        
+        <form action="{% url 'place_order' %}" method="post" class="mt-3">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success btn-lg">REALIZAR PEDIDO</button>
+        </form>
+    </div>
+</body>
+
+</html>

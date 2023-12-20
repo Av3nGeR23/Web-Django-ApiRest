@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página de Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <style>
+        /* Estilo para el fondo con la imagen desde una URL externa */
+        body {
+            background-image: url('https://www.latercera.com/resizer/rHXbfywbaQvA5J2hyx92hzUFNvw=/900x600/smart/cloudfront-us-east-1.images.arcpublishing.com/copesa/JPI3ZEE3VNDKBDNAHEDLSFMAVQ.jpg');  /* Reemplaza 'URL_DE_LA_IMAGEN' con la URL real de la imagen */
+            background-size: cover;  /* Ajusta el tamaño de la imagen para cubrir el fondo */
+        }
+         /* Estilo para el carrusel */
+    #carouselExampleIndicators {
+        margin-top: 50px;
+        max-width: 1000px; /* Cambia el ancho máximo del carrusel */
+        margin: 0 auto; /* Centra el carrusel horizontalmente */
+    }
+
+    .carousel-item img {
+        max-height: 600px; /* Cambia la altura máxima de las imágenes */
+        margin: 0 auto; /* Centra las imágenes horizontalmente */
+    }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+     
+    <div class="alert alert-info display-1 text-center" style="background-color: rgba(255, 255, 255, 0.8); font-weight: bold;">TODO ZAPATILLAS</div>
+    <div class="container">
+        <h1 class="mt-5" style="color: white;">Bienvenido a Nuestra Tienda Online</h1>
+        <p style="color: white;">Explora nuestros productos y añádelos a tu carrito de compras.</p>
+        
+
+    </div>
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://media.revistagq.com/photos/63f5e18c29543f9222599b30/16:9/w_1920,c_limit/nike-running-shoes-streakfly-invincible.jpg" class="d-block w-100" alt="Nike">
+            </div>
+            <div class="carousel-item">
+                <img src="https://i.blogs.es/eb10f2/adidas-gazelle/1366_2000.jpeg" class="d-block w-100" alt="Puma">
+            </div>
+            <div class="carousel-item">
+                <img src="https://www.streetprorunning.com/blog/wp-content/uploads/2019/05/1-imagen-blog-puma-gama-rs-x.jpg" class="d-block w-100" alt="Puma">
+            </div>
+            <div class="carousel-item">
+                <img src="https://media.revistagq.com/photos/5efb1cfd09f9a6fc5dffb1ac/16:9/w_1920,c_limit/zapatillas%20jordan%20retro%20(1).jpg" class="d-block w-100" alt="Jordan">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Scripts de Bootstrap al final del cuerpo -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Estilo para el fondo con la imagen desde una URL externa */
+        body {
+            background-image: url('https://www.latercera.com/resizer/rHXbfywbaQvA5J2hyx92hzUFNvw=/900x600/smart/cloudfront-us-east-1.images.arcpublishing.com/copesa/JPI3ZEE3VNDKBDNAHEDLSFMAVQ.jpg');
+            background-size: cover;
+        }
+        
+        /* Estilo para la caja translúcida */
+        .transparent-box {
+            background-color: rgba(255, 255, 255, 0.7); /* Color de fondo translúcido */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+        }
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="container">
+        <div class="transparent-box mt-5"> <!-- Agregando la clase de la caja translúcida -->
+            <h2>Crear una Cuenta Nueva</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary mt-3">Registrarse</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Productos Disponibles</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Estilo para el fondo con la imagen desde una URL externa */
+        body {
+            background-image: url('https://www.latercera.com/resizer/rHXbfywbaQvA5J2hyx92hzUFNvw=/900x600/smart/cloudfront-us-east-1.images.arcpublishing.com/copesa/JPI3ZEE3VNDKBDNAHEDLSFMAVQ.jpg');  /* Reemplaza 'URL_DE_LA_IMAGEN' con la URL real de la imagen */
+            background-size: cover;  /* Ajusta el tamaño de la imagen para cubrir el fondo */
+        }
+        
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+    <div class="alert alert-info display-1 text-center" style="background-color: rgba(255, 255, 255, 0.8); font-weight: bold;">PRODUCTOS DISPONIBLES</div>
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4 mt-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title"  >{{ product.marca }}</h3>
+                            <h5 class="card-title">{{ product.modelo }}</h5>
+                            <p class="card-text">Precio: {{ product.precio }}</p>
+                            <!-- Otros campos del producto según tu modelo -->
+                            <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Añadir al Carrito</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>

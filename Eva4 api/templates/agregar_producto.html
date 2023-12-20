@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página de Inicio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Estilo para el fondo con la imagen desde una URL externa */
+        body {
+            background-image: url('https://www.latercera.com/resizer/rHXbfywbaQvA5J2hyx92hzUFNvw=/900x600/smart/cloudfront-us-east-1.images.arcpublishing.com/copesa/JPI3ZEE3VNDKBDNAHEDLSFMAVQ.jpg');
+            background-size: cover;
+        }
+        /* Estilo para las secciones izquierda y derecha */
+        .left-section,
+        .right-section {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Tu barra de navegación -->
+    {% include 'navbar.html' %}
+
+    <div class="alert alert-info display-1 text-center" style="background-color: rgba(255, 255, 255, 0.8); font-weight: bold;">INGRESO ZAPATILLAS</div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="left-section">
+                    <h2>Resumen de Productos en Stock</h2>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Marca</th>
+                                <th>Modelo</th>
+                                <th>Talla</th>
+                                <th>Color</th>
+                                <th>Cantidad Disponible</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for producto in productos %}
+                                <tr>
+                                    <td>{{ producto.marca }}</td>
+                                    <td>{{ producto.modelo }}</td>
+                                    <td>{{ producto.talla }}</td>
+                                    <td>{{ producto.color }}</td>
+                                    <td>{{ producto.cantidad_disponible }}</td>
+                                    <td>
+                                        <form method="post" action="{% url 'eliminarProyecto' producto.id %}">
+                                            {% csrf_token %}
+                                            <input type="submit" value="Eliminar" class="btn btn-danger btn-sm">
+                                        </form>
+                                        <a href="{% url 'actualizarProyecto' producto.id %}" class="btn btn-primary btn-sm">Modificar</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="right-section">
+                    <form method="post">
+                        <table class="table">
+                            {{ form.as_table }}
+                        </table>
+                        {% csrf_token %}
+                        <div class="text-center">
+                            <a href="{% url 'home' %}" class="btn btn-danger">VOLVER</a>
+                            <input type="submit" value="Guardar" class="btn btn-success" style="text-transform: uppercase;">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
